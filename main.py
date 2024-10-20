@@ -24,8 +24,8 @@ class Team:
         self.losses = losses
         self.score = score
         self.seed = seed
-        self.lightLogo = f"https://hooperapi.onrender.com/logos/light/{team_id}"
-        self.darkLogo = f"https://hooperapi.onrender.com/logos/dark/{team_id}"
+        self.lightLogo = f"https://hooperapi.onrender.com/logos/light/{team_slug}"
+        self.darkLogo = f"https://hooperapi.onrender.com/logos/dark/{team_slug}"
 
 
 class Player:
