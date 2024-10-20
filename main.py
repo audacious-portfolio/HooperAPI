@@ -46,7 +46,6 @@ class Game:
     self.gameId = game_id
     self.gameStatus = game_status
     self.gameDateTime = game_date_time
-    self.gameStatus = game_status
     self.homeTeam = home_team
     self.awayTeam = away_team
     self.pointsLeader = points_leader
