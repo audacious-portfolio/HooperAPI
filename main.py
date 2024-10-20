@@ -37,7 +37,6 @@ class Player:
         self.teamName = team_name
         self.teamCity = team_city
         self.teamTricode = team_tricode
-        self.teamSlug = team_slug
         self.points = points
         self.headshot = f"https://cdn.nba.com/headshots/nba/latest/1040x760/{player_id}.png"
 
