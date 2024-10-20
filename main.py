@@ -71,6 +71,8 @@ async def get_games_by_date(date: str):
 
         try:
             points_leader = Player(game["pointsLeaders"][0]["personId"], game["pointsLeaders"][0]["firstName"], game["pointsLeaders"][0]["lastName"], game["pointsLeaders"][0]["teamId"], game["pointsLeaders"][0]["teamName"], game["pointsLeaders"][0]["teamCity"], game["pointsLeaders"][0]["teamTricode"], game["pointsLeaders"][0]["points"])
+        except IndexError:
+            points_leader = None
         except KeyError:
             points_leader = None
 
