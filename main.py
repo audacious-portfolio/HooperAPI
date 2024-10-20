@@ -1,7 +1,11 @@
 from fastapi import FastAPI
+from fastapi.staticfiles import StaticFiles
 import requests
 
+
 app = FastAPI()
+
+app.mount("/logos", StaticFiles(directory="static"), name="static")
 
 
 @app.get("/")
@@ -19,6 +23,8 @@ class Team:
         self.losses = losses
         self.score = score
         self.seed = seed
+        self.lightLogo = f"https://cdn.nba.com/logos/nba/{team_id}/primary/L/logo.png"
+        self.darkLogo = f"https://cdn.nba.com/logos/nba/{team_id}/primary/D/logo.png"
 
 
 class Player:
@@ -31,6 +37,7 @@ class Player:
         self.teamCity = team_city
         self.teamTricode = team_tricode
         self.points = points
+        self.headshot = f"https://cdn.nba.com/headshots/nba/latest/1040x760/{player_id}.png"
 
 
 class Game:
