@@ -68,7 +68,12 @@ async def get_games_by_date(date: str):
     for game in raw_games:
         home_team = Team(game["homeTeam"]["teamId"], game["homeTeam"]["teamName"], game["homeTeam"]["teamCity"], game["homeTeam"]["teamTricode"], game["homeTeam"]["teamSlug"], game["homeTeam"]["wins"], game["homeTeam"]["losses"], game["homeTeam"]["score"], game["homeTeam"]["seed"])
         away_team = Team(game["awayTeam"]["teamId"], game["awayTeam"]["teamName"], game["awayTeam"]["teamCity"], game["awayTeam"]["teamTricode"], game["awayTeam"]["teamSlug"], game["awayTeam"]["wins"], game["awayTeam"]["losses"], game["awayTeam"]["score"], game["awayTeam"]["seed"])
-        points_leader = Player(game["pointsLeaders"][0]["personId"], game["pointsLeaders"][0]["firstName"], game["pointsLeaders"][0]["lastName"], game["pointsLeaders"][0]["teamId"], game["pointsLeaders"][0]["teamName"], game["pointsLeaders"][0]["teamCity"], game["pointsLeaders"][0]["teamTricode"], game["pointsLeaders"][0]["points"],)
+
+        try:
+            points_leader = Player(game["pointsLeaders"][0]["personId"], game["pointsLeaders"][0]["firstName"], game["pointsLeaders"][0]["lastName"], game["pointsLeaders"][0]["teamId"], game["pointsLeaders"][0]["teamName"], game["pointsLeaders"][0]["teamCity"], game["pointsLeaders"][0]["teamTricode"], game["pointsLeaders"][0]["points"])
+        except KeyError:
+            points_leader = None
+
         games.append(Game(game["gameId"], game["gameStatusText"], game["gameDateTimeEst"], home_team , away_team, points_leader))
 
     return {"data": games}
